@@ -12,7 +12,7 @@ const monthName = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Se
 const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var notesObj = [];
 var trashObj = [];
-let flag;
+let addFlag, deleteFlag;
 let myArrayOfTitles;
 
 class MajorNotesOperation {
@@ -66,7 +66,7 @@ class MajorNotesOperation {
                         </svg></span>
                     </button>
                     <!-- <button style="background-color: white; color: black" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button> -->
-                    <div class="dropdown-menu div-block-222" aria-labelledby="dropdownMenuButton" style="background-color: black">
+                    <div class="dropdown-menu div-block-222" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" id="${index}" href="#" onclick="MajorOperationsObj.addNoteToTrash('${element.Title}', '${element.Text}', '${element.Date}'); MajorOperationsObj.deleteNote(this.id);">Delete note</a>
                         <a class="dropdown-item" href="#" onclick="MajorOperationsObj.duplicateNote('${element.Title}', '${element.Text}')">Duplicate note</a>
                     </div>
@@ -177,24 +177,23 @@ class MajorSpeak {
 
     speek(text) {
         textToSpeak.text = text;
+        
         let myArrayOfTitles = localStorage.getItem("notes");
         myArrayOfTitles = JSON.parse(myArrayOfTitles);
         if (textToSpeak.text.includes("major add a note")) {
             speechSynthesis.speak(new SpeechSynthesisUtterance("please tell the title and text of a note."));
             setTimeout(1000);
-            flag = true;
+            addFlag = true;
         }
-        else if (textToSpeak.text.includes("major delete note")) {
-            textToSpeak.text = textToSpeak.text.replace("delete note ", "");
-            console.log(textToSpeak.text);
-            Array.from(myArrayOfTitles).forEach((element, index) => {
-                console.log(element.Title.toLowerCase());
-                if (textToSpeak.text == element.Title.toLowerCase())
-                    new MajorNotesOperation().deleteNote(index);
-            });
+        else if (textToSpeak.text.includes("major delete a note")) {
+
+            speechSynthesis.speak(new SpeechSynthesisUtterance("please tell the title of a note."));
+            setTimeout(1000);
+
+            deleteFlag = true;
         }
-        else if (flag == true) {
-            flag = false;
+        else if (addFlag) {
+            addFlag = false;
             if (text.includes("with title")) {
                 addTitle.value = text.split("with title ")[1];
                 addTxt.value = text.split("with title ")[0];
@@ -204,7 +203,15 @@ class MajorSpeak {
                 addTxt.value = text;
             }
             addBtn.click();
+        }
 
+        else if (deleteFlag) {
+            deleteFlag = false;
+            
+            Array.from(myArrayOfTitles).forEach((element, index) => {
+                if (text.toLowerCase() == element.Title.toLowerCase())
+                    new MajorNotesOperation().deleteNote(index);
+            });
         }
     }
 }
@@ -225,7 +232,8 @@ recognition.onresult = function (event) {
 }
 
 recognition.onend = function () {
-    flag ? recognition.start() : null;
+    addFlag ? recognition.start() : null;
+    deleteFlag ? recognition.start() : null;
 }
 
 addBtn.addEventListener("click", () => {

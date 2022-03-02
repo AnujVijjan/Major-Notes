@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Major Notes App</title>
-    <link rel="stylesheet" type="text/css" href="/Notes Project/CSS/styles.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdn.shopify.com/s/files/1/0027/9527/4276/t/6/assets/theme.scss.css?441">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="https://uploads-ssl.webflow.com/5aa3c4fc80d0970001ec334f/css/designnotes.webflow.903146f70.min.css" rel="stylesheet" type="text/css"> -->
-    <link rel="stylesheet" href="//cdn.shopify.com/s/files/1/0027/9527/4276/t/6/assets/theme.scss.css?441">
+    
     <link rel="stylesheet" href="https://www.scrumbs.app/public/css/scrumbs-stylesheet.css">
     <link rel="shortcut icon" href="https://img.icons8.com/nolan/64/000000/note.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css" />
 </head>
 
 <body>
@@ -28,7 +30,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Notes Project/HTML/trash.html">Trash<span
+                    <a class="nav-link" href="./trash.html">Trash<span
                             class="sr-only">(current)></span></a>
                 </li>
             </ul>
@@ -44,7 +46,7 @@
     <div id="addNoteStatus"> </div>
     <div class="container my-3">
         <h1>Major Notes</h1>
-        <div class="my-2 mx-2 card" style="width: 50rem">
+        <div class="my-2 mx-2 card" style="width: 80%">
             <div class="my-2 mx-2 card-body">
                 <h5 class="my-2 mx-2 card-title">Add a note title</h5>
                 <div class="form-group">
@@ -54,7 +56,7 @@
                 <div class="form-group">
                     <textarea class="form-control" id="addText" rows="3"></textarea>
                 </div>
-                <button style="text-align: left" class="primary-button" id="addBtn">Add Note</button>
+                <button style="text-align: left" class="btn btn-primary" id="addBtn">Add Note</button>
             </div>
         </div>
         <hr>
@@ -72,6 +74,6 @@
             crossorigin="anonymous"></script>
     </div>
 </body>
-<script src="/Notes Project/JS/app.js"></script>
+<script src="../JS/app.js"></script>
 
 </html>

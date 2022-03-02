@@ -64,7 +64,7 @@ class MajorNotesTrashOperations {
                     </svg></span>
                 </button>
                 <!-- <button style="background-color: white; color: black" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button> -->
-                <div class="dropdown-menu div-block-222" aria-labelledby="dropdownMenuButton" style="background-color: black">
+                <div class="dropdown-menu div-block-222" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" id="${index}" href="#" onclick="MajorNotesTrashOperationsObj.deleteNote(this.id);">Delete From Trash</a>
                     <a class="dropdown-item" href="#" onclick="MajorNotesTrashOperationsObj.restoreNotesFromTrash('${element.Title}', '${element.Text}', '${element.Date}','${index}')">Restore From Trash</a>
                 </div>
